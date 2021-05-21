@@ -1,6 +1,6 @@
 FROM alpine
-RUN apt-get update && apt-get install -y wget
-WORKDIR /tmp/
+WORKDIR /var/
 ENV SITE_URL=https://en.wikipedia.org
-COPY faviconDownload.sh /tmp/
-CMD "/bin/bash" "faviconDownload.sh"
+RUN apk update && apk add wget
+COPY faviconDownload.sh /var/
+CMD "/bin/sh" "faviconDownload.sh"
